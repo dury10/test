@@ -151,7 +151,7 @@ compileaarch64 () {
 	  [yY]* )
 				sudo sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
 				sudo sed -i 's/-march=native/-mcpu=cortex-a53/g' m7/Makefile
-				eco "The cpu detection was set to cortex-a53"
+				echo "The cpu detection was set to cortex-a53"
 		  break;;
 	  [nN]* )
 				echo "The cpu detection it's native"
