@@ -96,7 +96,7 @@ compilearmv71 () {
 				read -p "are using a Raspberry. Yes/No [yY/nN]" pi
 	case $pi in
 	[yY]* )
-				sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
+				sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile.am
 				echo "The cpu detection was set to cortex-a53"
 		  break;;
 	[nN]* )
@@ -145,7 +145,7 @@ compileaarch64 () {
 		                read -p "Are using a Raspberry. Yes/No [yY/nN]" pi
         case $pi in
         [yY]* )
-                                sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
+                                sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile.am
                                 echo "The cpu detection was set to cortex-a53"
                   break;;
         [nN]* )
