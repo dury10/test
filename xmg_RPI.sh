@@ -33,46 +33,6 @@ folder () {
 
 }
 
-compilex86_64 () { 
-	
-	while true 
-	do 
-	
-		if [ $1 -eq 0 ]; then 
-			read -p "Download and compile newest miner version(takes longer)? Yes/No [yY/nN] " answer 
-		else
-			answer="y"
-		fi
-
-	  # (2) handle the input we were given 
-	  case $answer in 
-	   [yY]* ) 
-
-
-                                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update > /dev/null 2>&1
-                                DEBIAN_FRONTEND=noninteractive apt-get -y -qq upgrade > /dev/null 2>&1
-                                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ git pthreads zlib  build-essential zlib1g-dev libncurses5-dev curl > /dev/null 2>&1
-                                git clone https://github.com/magi-project/m-cpuminer-v2 > /dev/null 2>&1
-                                cd m-cpuminer-v2
-                                sudo ./autogen.sh > /dev/null 2>&1
-                                sudo ./configure CFLAGS="-O3" CXXFLAGS="-O3" > /dev/null 2>&1
-                                sudo make clean > /dev/null 2>&1 && sudo  make -j > /dev/null 2>&1
-                                echo "./m-cpuminer-v2"
-
-
-		  break;;
-		   
-	   [nN]* )	       
-				read -p "Thanks, to exit the install pres Ctrl+C"
-		  break;; 
-		   
-	  * )    echo "Yes/No [yY/nN]";;
-		 
-	  esac 
-	done 
-
-}
-
 compilearmv71 () { 
 	
 
@@ -92,7 +52,7 @@ compilearmv71 () {
 				DEBIAN_FRONTEND=noninteractive apt-get -y -qq update > /dev/null 2>&1
                                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq upgrade > /dev/null 2>&1
                                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq install automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ git pthreads zlib  build-essential zlib1g-dev libncurses5-dev curl > /dev/null 2>&1
-                                git clone https://github.com/ElKowak/cpuminer-opt-RPI > /dev/null 2>&1
+                                git clone https://github.com/dury10/cpuminer-opt-RPI  > /dev/null 2>&1
                                 cd cpuminer-optRPI
                                 sudo ./build.sh > /dev/null 2>&1
                   break;;
@@ -125,7 +85,7 @@ compileaarch64 () {
 				DEBIAN_FRONTEND=noninteractive apt-get -y -qq update > /dev/null 2>&1
                                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq upgrade > /dev/null 2>&1
                                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq install automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ git pthreads zlib  build-essential zlib1g-dev libncurses5-dev curl > /dev/null 2>&1
-                                git clone https://github.com/ElKowak/cpuminer-opt-RPI > /dev/null 2>&1
+                                git clone https://github.com/dury10/cpuminer-opt-RPI  > /dev/null 2>&1
                                 cd cpuminer-opt-RPI
                                 sudo ./build.sh > /dev/null 2>&1
                   break;;
@@ -181,8 +141,8 @@ poolcreds () {
                         read -p "workername: " workername
                         read -p "workerpass: " workerpass
                         read -p "threads: " threads
-                        read -p "cpu_efficiency: "  cpu_efficiency
-                        string="./cpuminer -a m7m -o stratum+tcp://$poolurl:$poolport -u $username.$workername -p $workerpass -t $threads -e $cpu_efficiency"
+                      
+                        string="./cpuminer -a m7m -o stratum+tcp://$poolurl:$poolport -u $username.$workername -p $workerpass -t $threads "
                         echo $string
 }
 
@@ -209,14 +169,6 @@ do
 done 
 
 case $type in 
-   x86_64) 
-		folder $default
-		path=$(compilex86_64 $default)
-		runme $default $path
-		follow
-		slack
-		donate
-		exit 0;;
        
    armv71)
 		folder $default
