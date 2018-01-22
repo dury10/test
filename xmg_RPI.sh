@@ -53,7 +53,7 @@ compilearmv71 () {
                                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq upgrade > /dev/null 2>&1
                                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq install automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ git pthreads zlib  build-essential zlib1g-dev libncurses5-dev curl > /dev/null 2>&1
                                 git clone https://github.com/dury10/cpuminer-opt-RPI  > /dev/null 2>&1
-                                cd cpuminer-optRPI
+                                cd cpuminer-opt-RPI
                                 sudo ./build.sh > /dev/null 2>&1
                   break;;
 
