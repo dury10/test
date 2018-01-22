@@ -14,7 +14,7 @@ follow () {
 	echo -e "\e[1;36m Follow us on Tweeter: @nadirdury  &  @Coin_Magi_XMG \e[0m"
 }
 slack () {
-	echo -e "\e[1;35m Join owr Slack Community: http://slack.m-core.org/ \e[0m"
+	echo -e "\e[1;35m Join our Slack Community: http://slack.m-core.org/ \e[0m"
 }
 donate () {
 	echo -e "\e[1;33m If you found this script useful please donate :) XMG - 9KcKx8TdnNStNkp7qpjzJZ8CyDTs1RiGqF and we will make more! Thanks! \e[0m"
