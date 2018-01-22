@@ -95,16 +95,16 @@ compilearmv71 () {
                                 CFLAGS="-O2 mfpu=neon-vfpv4" ./configure > /dev/null 2>&1
 				read -p "are using a Raspberry. Yes/No [yY/nN]" pi
 	case $pi in
-	[yY]*)
+	[yY]* )
 				sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
 				echo "The cpu detection was set to cortex-a53"
 		  break;;
-	[nN]*)
+	[nN]* )
 				echo "You are a luck one :D"
 
-		  break;;
                                 make clean > /dev/null 2>&1 &&  make -j4 > /dev/null 2>&1
                                 echo "./m-cpuminer-v2"
+		  break;;
 	* )
 		echo "Yex/No [yY/nN]";;
  
@@ -144,16 +144,15 @@ compileaarch64 () {
                                 CFLAGS="-O2 mfpu=neon-vfpv4" ./configure > /dev/null 2>&1
 		                read -p "Are using a Raspberry. Yes/No [yY/nN]" pi
         case $pi in
-        [yY]*)
+        [yY]* )
                                 sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
                                 echo "The cpu detection was set to cortex-a53"
                   break;;
-        [nN]*)
+        [nN]* )
                                 echo "You are a luck one :D"
-
-                  break;;
                                 make clean > /dev/null 2>&1 &&  make -j4 > /dev/null 2>&1
                                 echo "./m-cpuminer-v2"
+		  break;;
            * )
                 echo "Yex/No [yY/nN]";;
 
