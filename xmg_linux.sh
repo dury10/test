@@ -96,19 +96,19 @@ compilearmv71 () {
                                 cd m-cpuminer-v2
                                 sudo ./autogen.sh > /dev/null 2>&1
                                 sudo CFLAG="-O2 mfpu=neon-vfpv4" ./configure > /dev/null 2>&1
-				read -p "Are you using Raspberry. Yes/No [yY/nN]" pi
-	  case $pi in
-	  [yY]* )
-				sudo sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
-				sudo sed -i 's/-march=mative/-mcpu=cortex-a53/g' m7/Makefile
-				echo "The cpu detection was set to cortex-a53"
-		  break;;
-	  [nN]* )
-				echo "The cpu detection it's set to native"
-
-		  break;;
-	  * )    echo "Yes/No [yY/nN]";;
-	  esac
+#				read -p "Are you using Raspberry. Yes/No [yY/nN]" pi
+#	  case $pi in
+#	  [yY]* )
+#				sudo sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
+#				sudo sed -i 's/-march=mative/-mcpu=cortex-a53/g' m7/Makefile
+#				echo "The cpu detection was set to cortex-a53"
+#		  break;;
+#	  [nN]* )
+#				echo "The cpu detection it's set to native"
+#
+#		  break;;
+#	  * )    echo "Yes/No [yY/nN]";;
+#	  esac
 
                                 sudo make clean > /dev/null 2>&1 && sudo  make -j4 > /dev/null 2>&1
                                 echo "./m-cpuminer-v2"
@@ -146,18 +146,18 @@ compileaarch64 () {
                                 cd m-cpuminer-v2
                                 sudo ./autogen.sh > /dev/null 2>&1
                                 sudo CFLAG="-O2 mfpu=neon-vfpv4" ./configure > /dev/null 2>&1
-				read -p "Are you using a Raspberry. Yes/No [yY/nN]" pi
-	 case $pi in
-	  [yY]* )
-				sudo sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
-				sudo sed -i 's/-march=native/-mcpu=cortex-a53/g' m7/Makefile
-				echo "The cpu detection was set to cortex-a53"
-		  break;;
-	  [nN]* )
-				echo "The cpu detection it's native"
-		  break;;
-	  * ) 	 echo "Yes/No [yY/nN]";;
-	 esac
+#				read -p "Are you using a Raspberry. Yes/No [yY/nN]" pi
+#	 case $pi in
+#	  [yY]* )
+#				sudo sed -i 's/-march=native/-mcpu=cortex-a53/g' Makefile
+#				sudo sed -i 's/-march=native/-mcpu=cortex-a53/g' m7/Makefile
+#				echo "The cpu detection was set to cortex-a53"
+#		  break;;
+#	  [nN]* )
+#				eho "The cpu detection it's native"
+#		  break;;
+#	  * ) 	 echo "Yes/No [yY/nN]";;
+#	 esac
 
                                 sudo make clean > /dev/null 2>&1 && sudo  make -j4 > /dev/null 2>&1
                                 echo "./m-cpuminer-v2"
